@@ -39,7 +39,7 @@ def editar(request, id_investimento):
     if request.method== 'GET':
         formulario = InvestimentoForms(instance=investimento)
         return render(request, 'investimentos/novo_investimento.html',{'formulario':formulario})
-    else:
+    if request.method== 'POST':
         formulario = InvestimentoForms(request.POST, instance=investimento)
         if formulario.is_valid():
             formulario.save()
